@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Item from "./Item";
 import OrderModal from "./OrderModal";
+import { useMenu } from "../context/menuContext";
 
-function Menu({ menu, cart, setCart }) {
+function Menu({ cart, setCart }) {
+  const { menu } = useMenu();
   const [modalOn, setModalOn] = useState(false);
   const [modalMenu, setModalMenu] = useState(null);
   if (!menu)
@@ -12,10 +14,10 @@ function Menu({ menu, cart, setCart }) {
       </div>
     );
 
-  const categorys = Object.keys(menu);
+  const categories = Object.keys(menu);
   return (
     <>
-      {categorys.map((category) => {
+      {categories.map((category) => {
         return (
           <section key={category}>
             <h2>{category}</h2>
